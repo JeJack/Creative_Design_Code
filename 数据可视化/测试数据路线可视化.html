@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=E06eb9d756d0eafc722effb355657b4c"></script>
+	<title>车辆运行轨迹测试</title>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/243/rvh6vp8w/points-sample-data.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/243/rvh6vp8w/data.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/243/rvh6vp8w/data.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/243/rvh6vp8w/1.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/243/rvh6vp8w/1.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/243/rvh6vp8w/points-sample-data.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/243/rvh6vp8w/data.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/243/rvh6vp8w/data.js"></script>
+<script src="http://c.cnzz.com/core.php"></script></head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var startLong = 104.09996406723;
+	var startLat = 30.661037831874;
+	var endLong = 104.10106960736;
+	var endLat = 30.663967513271;
+
+	
+	var Long=new Array(104.09996406723
+,104.10106960736
+,104.10245206057
+,104.10307028022
+,104.09997208816
+,104.09662913999
+,104.09411984454
+,104.09031861503
+,104.08656538706
+,104.08365251313
+,104.08072611985
+,104.0776365432
+,104.07477226954
+,104.07121285822
+,104.06790818154
+,104.06533468028
+,104.06337785367
+,104.06296677465									 
+,104.06053850079
+,104.05812309171
+,104.05701400183
+,104.05732444445
+,104.05634017916
+,104.05455517214
+,104.05309402173);
+	
+	var Lat=new Array(30.661037831874
+,30.663967513271
+,30.667179215044
+,30.669692192719
+,30.671898274405
+,30.673846342666
+,30.675920004334
+,30.677258250728
+,30.67902993726
+,30.680031043132
+,30.680991586188
+,30.683251678067
+,30.6843321066
+,30.68517009154
+,30.684139529146
+,30.683001880246
+,30.681691307832
+,30.681621870106
+,30.680037152924
+,30.678466820237
+,30.675819048426
+,30.673002729156
+,30.669747033928
+,30.66754306903
+,30.668252826266);
+	
+	
+	var linesPoints = null;
+	// 百度地图API功能
+	
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(104.072384,30.663535), 15);  // 初始化地图,设置中心点坐标和地图级别
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+	map.setCurrentCity("成都");          // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+   
+  
+		 
+		for(var i=1;i<Long.length;i++){
+		 
+		var polyline = new BMap.Polyline([
+		                                  new BMap.Point(startLong,startLat),//起始点的经纬度
+		                                  new BMap.Point(endLong,endLat)//终止点的经纬度
+		                                  ], {strokeColor:"green",//设置颜色 
+		                                  strokeWeight:3, //宽度
+		                                  strokeOpacity:1});//透明度
+	   map.addOverlay(polyline);
+		 startLong = Long[i];
+	   startLat = Lat[i];
+		 endLong = Long[i+1];
+	   endLat = Lat[i+1];
+	}
+		
+		
+	 
+   
+	
+   
+</script>
